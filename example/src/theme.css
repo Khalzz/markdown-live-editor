@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+/* The library's own chrome (drag handle, slash menu, selection menu, drag
+   ghost) is styled with these token names — copied here from the app this
+   editor was originally extracted from so the demo renders with real
+   colors instead of unstyled/invisible elements. Swap these for your own
+   palette; the library itself has no opinion on what they resolve to. */
+@theme {
+  --color-base: #161616;
+  --color-surface: #1c1c1c;
+  --color-gold-50: #fdf8ec;
+  --color-gold-100: #f9efce;
+  --color-gold-200: #f2dc9a;
+  --color-gold-300: #e9c96a;
+  --color-gold-400: #ddb84e;
+  --color-gold-500: #c8a84b;
+  --color-gold-600: #a8872d;
+  --color-gold-700: #7e6320;
+  --color-gold-800: #554018;
+  --color-gold-900: #2e2210;
+  --color-gold-950: #171009;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background-color: var(--color-base);
+}
