@@ -2,10 +2,16 @@ import { Extension } from "@tiptap/core";
 import Suggestion from "@tiptap/suggestion";
 import { ReactRenderer } from "@tiptap/react";
 import type { SlashBlock, SlashGroup } from "./slashGroups";
-import { SlashMenu } from "./SlashMenu";
+import { SlashMenu } from "../components/SlashMenu";
+import type { MarkdownLiveMenuStyles } from "../types";
+import { ZINC_THEME } from "../themes/definitions/zinc";
 
 export interface SlashCommandOptions {
   groups: SlashGroup[];
+  // MarkdownLiveEditor always passes the active theme's `menu` chrome
+  // explicitly (see MarkdownLiveEditor.tsx) — the zinc default here only
+  // matters if this extension is ever used standalone, outside that.
+  menu: MarkdownLiveMenuStyles;
 }
 
 // Notion-style "/" menu, built on Tiptap's own Suggestion utility — the same
@@ -17,10 +23,11 @@ export interface SlashCommandOptions {
 export const SlashCommand = Extension.create<SlashCommandOptions>({
   name: "slashCommand",
   addOptions() {
-    return { groups: [] as SlashGroup[] };
+    return { groups: [] as SlashGroup[], menu: ZINC_THEME.menu };
   },
   addProseMirrorPlugins() {
     const groups = this.options.groups;
+    const menu = this.options.menu;
     return [
       Suggestion<SlashGroup, SlashBlock>({
         editor: this.editor,
@@ -53,6 +60,7 @@ export const SlashCommand = Extension.create<SlashCommandOptions>({
             component?.updateProps({
               groups: latestGroups,
               highlighted,
+              menu,
               onHover: (i: number) => { highlighted = i; push(); },
               onSelect: (block: SlashBlock) => latestCommand?.(block),
             });
@@ -67,6 +75,7 @@ export const SlashCommand = Extension.create<SlashCommandOptions>({
                 props: {
                   groups: latestGroups,
                   highlighted,
+                  menu,
                   onHover: (i: number) => { highlighted = i; push(); },
                   onSelect: (block: SlashBlock) => latestCommand?.(block),
                 },

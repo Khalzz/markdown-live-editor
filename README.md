@@ -8,7 +8,7 @@ Ships **no embeds of its own** — page galleries, images, custom blocks, whatev
 
 - A Notion-style hover handle for drag-to-reorder blocks, with a cursor-following ghost preview.
 - A "/" slash command menu (built-in text formatting defaults: headings, bold/italic, lists, quote, code, divider, table).
-- A right-click formatting menu, shown only when text is actually selected.
+- A floating formatting card (bold/italic/strike/code) that appears above the selection as soon as text is selected.
 - A placeholder ("New Page") shown only when the whole document is empty.
 - A fix for a real Tiptap quirk: input rules (`**bold**`, `- list`, etc.) don't fire reliably when this editor is nested inside another instance's own custom node (e.g. a "card" embed whose content is itself a nested editor) — `inputRuleRelay.ts` works around it.
 

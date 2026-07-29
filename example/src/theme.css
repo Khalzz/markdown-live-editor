@@ -1,24 +1,44 @@
 @import "tailwindcss";
+@source "../../src";
 
-/* The library's own chrome (drag handle, slash menu, selection menu, drag
-   ghost) is styled with these token names — copied here from the app this
-   editor was originally extracted from so the demo renders with real
-   colors instead of unstyled/invisible elements. Swap these for your own
-   palette; the library itself has no opinion on what they resolve to. */
+/* Makes `dark:` respond to a `.dark` class on an ancestor (toggled by the
+   example app's own dark-mode button) instead of only `prefers-color-
+   scheme` — every built-in theme (see src/themes/definitions/) uses
+   `dark:` variants directly in its own class strings, so this is what
+   makes that toggle actually switch anything. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Backs the `mauve`/`mist` built-in themes (see src/themes/definitions/)
+   — neither is a standard Tailwind color, and the library ships no CSS of
+   its own, so classes like `text-mauve-500` only render once the
+   consuming app's own Tailwind build defines these tokens. `zinc`,
+   `indigo`, and `slate` are all standard Tailwind colors and need nothing
+   here. */
 @theme {
   --color-base: #161616;
   --color-surface: #1c1c1c;
-  --color-gold-50: #fdf8ec;
-  --color-gold-100: #f9efce;
-  --color-gold-200: #f2dc9a;
-  --color-gold-300: #e9c96a;
-  --color-gold-400: #ddb84e;
-  --color-gold-500: #c8a84b;
-  --color-gold-600: #a8872d;
-  --color-gold-700: #7e6320;
-  --color-gold-800: #554018;
-  --color-gold-900: #2e2210;
-  --color-gold-950: #171009;
+  --color-mauve-50: #faf4f6;
+  --color-mauve-100: #f5e8ec;
+  --color-mauve-200: #ead3db;
+  --color-mauve-300: #dab0c0;
+  --color-mauve-400: #c589a0;
+  --color-mauve-500: #ab6482;
+  --color-mauve-600: #8f4c68;
+  --color-mauve-700: #723a52;
+  --color-mauve-800: #5c2f43;
+  --color-mauve-900: #4a2637;
+  --color-mauve-950: #2b1520;
+  --color-mist-50: #f4f7f9;
+  --color-mist-100: #e7edf1;
+  --color-mist-200: #d3dee4;
+  --color-mist-300: #b0c2cc;
+  --color-mist-400: #85a0ae;
+  --color-mist-500: #63808f;
+  --color-mist-600: #4d6875;
+  --color-mist-700: #3e5460;
+  --color-mist-800: #34454f;
+  --color-mist-900: #2c3941;
+  --color-mist-950: #1a2429;
 }
 
 html,

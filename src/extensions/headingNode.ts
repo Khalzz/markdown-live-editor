@@ -1,6 +1,6 @@
 import { mergeAttributes } from "@tiptap/core";
 import Heading from "@tiptap/extension-heading";
-import type { MarkdownLiveStyles } from "./types";
+import type { MarkdownLiveStyles } from "../types";
 
 // Heading is the one styled node that can't just take a static
 // `HTMLAttributes: { class }` via `.configure()` — h1/h2/h3 share one node
