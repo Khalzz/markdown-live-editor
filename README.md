@@ -1,6 +1,6 @@
-# markdown-live-editor
-
 ![Editor screenshot](docs/screenshot.png)
+
+# markdown-live-editor
 
 A live, WYSIWYG-style markdown editor built on [Tiptap](https://tiptap.dev)/ProseMirror — real block elements (headings, paragraphs, lists, tables) instead of a plain-text buffer with syntax hidden/revealed via decorations. The document round-trips to/from a plain markdown string.
 
