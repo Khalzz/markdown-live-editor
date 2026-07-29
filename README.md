@@ -1,5 +1,7 @@
 # markdown-live-editor
 
+![Editor screenshot](docs/screenshot.png)
+
 A live, WYSIWYG-style markdown editor built on [Tiptap](https://tiptap.dev)/ProseMirror — real block elements (headings, paragraphs, lists, tables) instead of a plain-text buffer with syntax hidden/revealed via decorations. The document round-trips to/from a plain markdown string.
 
 Ships **no embeds of its own** — page galleries, images, custom blocks, whatever else, are entirely up to whatever app uses this. Bring your own Tiptap node extensions via the `extensions` prop, and your own extra "/" slash-menu entries for them via `slashGroups`.
