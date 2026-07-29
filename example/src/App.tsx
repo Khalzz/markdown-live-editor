@@ -47,7 +47,7 @@ export default function App() {
           <ThemeSelect value={themeName} onChange={setThemeName} />
         </div>
       </header>
-      <main className="flex-1 min-h-0 w-full flex flex-col justify-center items-center overflow-y-auto">
+      <main className="flex-1 min-h-0 w-full flex flex-col justify-center items-center overflow-y-auto overflow-x-visible">
         <div className="w-full max-w-4xl h-full flex flex-col justify-center items-center">
           <MarkdownLiveEditor
             content={content}

@@ -27,7 +27,7 @@ export const ZINC_THEME: MarkdownLiveTheme = {
   },
   handle: "text-zinc-400 dark:text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300",
   ghost: "bg-zinc-50 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300",
-  blockSelection: "[--select-pad:0.5rem] ring-2 ring-zinc-500/40 ring-offset-0 bg-zinc-500/10",
+  blockSelection: "[--select-pad:0.5rem] bg-zinc-200/80 dark:bg-zinc-500/20",
   textColors: [
     "#3f3f46", // zinc-700
     "#f87171", // red-400

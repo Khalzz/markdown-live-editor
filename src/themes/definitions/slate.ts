@@ -27,7 +27,7 @@ export const SLATE_THEME: MarkdownLiveTheme = {
   },
   handle: "text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-300",
   ghost: "bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300",
-  blockSelection: "[--select-pad:0.5rem] ring-2 ring-slate-500/40 ring-offset-0 bg-slate-500/10",
+  blockSelection: "[--select-pad:0.5rem] bg-slate-200/80 dark:bg-slate-500/20",
   textColors: [
     "#334155", // slate-700
     "#f87171", // red-400

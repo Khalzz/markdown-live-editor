@@ -24,10 +24,11 @@ export const MAUVE_THEME: MarkdownLiveTheme = {
     buttonActive: "border-mauve-400! dark:border-mauve-600! bg-mauve-500/15! dark:bg-mauve-500/20! text-mauve-950! dark:text-mauve-300!",
     separator: "bg-mauve-400/30 dark:bg-mauve-500/20",
     activeRing: "border-mauve-600! dark:border-mauve-300! ring-1! ring-mauve-600! dark:ring-mauve-300!",
+
   },
   handle: "text-mauve-400 dark:text-mauve-500 hover:text-mauve-700 dark:hover:text-mauve-300",
   ghost: "bg-mauve-50 dark:bg-mauve-950 text-mauve-700 dark:text-mauve-300",
-  blockSelection: "[--select-pad:0.5rem] ring-2 ring-mauve-500/40 ring-offset-0 bg-mauve-500/10",
+  blockSelection: "[--select-pad:0.5rem] bg-mauve-200/80 dark:bg-mauve-500/20",
   textColors: [
     "#8f4c68", // mauve-600
     "#f87171", // red-400

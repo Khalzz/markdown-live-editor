@@ -27,7 +27,7 @@ export const MIST_THEME: MarkdownLiveTheme = {
   },
   handle: "text-mist-400 dark:text-mist-500 hover:text-mist-700 dark:hover:text-mist-300",
   ghost: "bg-mist-50 dark:bg-mist-950 text-mist-700 dark:text-mist-300",
-  blockSelection: "[--select-pad:0.5rem] ring-2 ring-mist-500/40 ring-offset-0 bg-mist-500/10",
+  blockSelection: "[--select-pad:0.5rem] bg-mist-200/80 dark:bg-mist-500/20",
   textColors: [
     "#4d6875", // mist-600
     "#f87171", // red-400
