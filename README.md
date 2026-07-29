@@ -196,8 +196,10 @@ pnpm install
 pnpm --filter example dev
 ```
 
-Edits to `src/` hot-reload straight into the example app — no build/link step needed during development.
+Edits to `src/` hot-reload straight into the example app — no build/link step needed during development. This still works even though `package.json`'s `main`/`types` point at the built `dist/` (see Publishing below): `exports` also declares a `"source"` condition pointing at `src/index.ts`, and `example/vite.config.ts` explicitly requests it (`resolve.conditions: ["source"]`) — a real consumer's bundler doesn't ask for that condition, so it falls through to the normal `dist/`-pointing fields.
 
 ## Publishing
 
-Not yet built for distribution — `main`/`types` currently point straight at `src/`, which works for a workspace consumer (Vite/bundler-mode resolution transpiles it directly) but isn't what you'd want published to npm. Add a build step (`tsup` or Vite library mode) emitting `dist/` before `npm publish`.
+`pnpm build` (`tsup` under the hood, configured in `tsup.config.ts`) emits `dist/index.js` + `dist/index.d.ts`, with every `peerDependency` (React, every `@tiptap/*` package, ...) left as an external `import` rather than bundled in — a consumer supplies its own copies, and Tiptap specifically breaks if more than one copy of `@tiptap/core` ends up loaded at once. `files: ["dist"]` in `package.json` keeps everything else (`src/`, config) out of the published tarball. From there, publishing is the usual `npm login` (or already-configured pnpm credentials), bump `version`, `pnpm build && npm publish`.
+
+One thing that doesn't show up in a typical library's publish checklist: this package ships no compiled CSS at all — every theme is Tailwind class *strings* embedded directly in the JS (see Theming above), and Tailwind only generates CSS for class names its scanner can see as literal text in a file it's told to look at. Within this workspace that's `example/src/theme.css`'s `@source "../../src"`. A consuming app needs the equivalent pointed at wherever this package actually lands — e.g. `@source "../node_modules/markdown-live-editor/dist";` (Tailwind v4) or the matching `content` entry for v3 — or every theme's classes silently produce no CSS at all.
