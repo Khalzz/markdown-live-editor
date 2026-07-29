@@ -213,7 +213,15 @@ export function SelectionMenu({ editor, menu, textColors, highlightColors }: {
       editor={editor}
       options={{ placement: "top", offset: 8, strategy: "fixed" }}
       appendTo={() => document.body}
-      shouldShow={({ state }) => !state.selection.empty}
+      // `state.selection` is ProseMirror's own internal model — it only
+      // changes in response to a transaction dispatched through this
+      // editor, not from DOM/browser selection changes elsewhere on the
+      // page. Clicking a plain non-editable element outside the editor
+      // blurs it (`editor.isFocused` goes false) but never touches
+      // `state.selection` at all, so without checking focus too, a text
+      // selection made once left this menu stuck open indefinitely — the
+      // click "outside" never told ProseMirror anything changed.
+      shouldShow={({ editor: ed, state }) => ed.isFocused && !state.selection.empty}
       className={`flex items-center gap-0.5 border rounded-md shadow-lg p-1 z-10 ${menu.background} ${menu.border} ${menu.text}`}
     >
       {MARKS.map(({ mark, label, icon: Icon }) => (
