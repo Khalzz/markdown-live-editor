@@ -251,6 +251,17 @@ export function MarkdownLiveEditor({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editor]);
 
+  useEffect(() => {
+    if (!editor) return;
+    const onDocMouseDown = (event: MouseEvent) => {
+      if (!(editor.state.selection instanceof NodeSelection)) return;
+      if (containerRef.current?.contains(event.target as Node)) return;
+      editor.commands.setTextSelection(editor.state.selection.from);
+    };
+    document.addEventListener("mousedown", onDocMouseDown);
+    return () => document.removeEventListener("mousedown", onDocMouseDown);
+  }, [editor]);
+
   const findBlockElement = (target: EventTarget | null): HTMLElement | null => {
     if (!editor || !(target instanceof HTMLElement)) return null;
     const root = editor.view.dom;

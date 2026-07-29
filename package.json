@@ -1,6 +1,6 @@
 {
   "name": "markdown-live-editor",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A live, WYSIWYG-style markdown editor built on Tiptap/ProseMirror — real block elements instead of a plain-text buffer with syntax hidden/revealed via decorations. Ships no embeds of its own; bring your own Tiptap node extensions.",
   "type": "module",
   "main": "./dist/index.js",
